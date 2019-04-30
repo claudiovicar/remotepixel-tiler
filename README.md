@@ -39,3 +39,19 @@ $ terraform apply --var token=MySuperSecretToken
 - [landsat-tiler](https://github.com/mapbox/landsat-tiler)
 - [sentinel-tiler](https://github.com/mapbox/sentinel-tiler)
 - [cbers-tiler](https://github.com/mapbox/cbers-tiler)
+
+
+
+## Changes in this fork
+- Added variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to the Dockerfile.
+  - For some reason, the package built could not find those values. Those variables must be added to the system's env (e.g: 'export AWS_ACCESS_KEY_ID=<VALOR_AQUI>', inside ~/.bashrc or ~/.profile).
+
+- Changed the region of the modules on the Terraform config file (remotepixel-tiler.tf) to those where the corresponding images are stored.
+
+- In the case the Terraform commands raise errors, the changes below may be helpful:
+
+`$ terraform init -reconfigure`
+
+and
+
+`$terraform apply -lock=false --var token=MySuperSecretToken`

@@ -14,9 +14,9 @@ variable "token" {
 
 terraform {
   backend "s3" {
-    bucket         = "remotepixel-tf-state"
+    bucket         = "vega-remotepixel-tf-state"
     key            = "remotepixel-tiler/terraform.tfstate"
-    region         = "us-east-1"
+    region         = "eu-central-1"
     dynamodb_table = "remotepixel-tf-lock"
     encrypt        = true
   }
@@ -199,7 +199,7 @@ module "cogeo" {
   # General options
   project    = "${var.project}"
   stage_name = "${var.stage}"
-  region     = "us-east-1"
+  region     = "eu-central-1"
 
   # Lambda options
   lambda_name    = "cogeo"
